@@ -33,3 +33,13 @@ rank() over(partition by gender order by salary desc) as rankNum,
 dense_rank() over(partition by gender order by salary desc) as denseRankNum
 from employee_demographics dem 
 join employee_salary sal on sal.employee_id=dem.employee_id;
+
+
+
+-- advanced
+select *, 
+row_number() over(partition by gender,age,occupation order by salary desc) as rowNum,
+rank() over(partition by gender order by salary desc) as rankNum,
+dense_rank() over(partition by gender order by salary desc) as denseRankNum
+from employee_demographics dem 
+join employee_salary sal on sal.employee_id=dem.employee_id; 
